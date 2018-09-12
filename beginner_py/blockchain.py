@@ -3,6 +3,8 @@ blockchain = []
 
 def get_last_blockchain_value():
     """ Returns the last value in the blockchain. """
+    if len(blockchain) < 1:
+        return None
     return blockchain[-1]
 
 
@@ -14,6 +16,8 @@ def add_value(transaction_amount, last_transaction=[1]):
         :last_transaction: The last blockchain transaction (default[1])
 
     """
+    if last_transaction == None:
+        last_transaction = [1]
     blockchain.append([last_transaction, transaction_amount])
 
 
@@ -43,14 +47,18 @@ while True:
     print('Please choose')
     print('1: Add a new transaction ')
     print('2: Output the blockchain blocks')
+    print('q: Quit')
     user_choice = get_user_choice()
     if user_choice == '1':
         tx_amount = get_transaction_value()
         add_value(last_transaction=get_last_blockchain_value(), transaction_amount=tx_amount)
     elif user_choice == '2':
         print_blockchain_info()
+    elif user_choice == 'q':
+        break
     else:
         print('Choice was invalid, Please only use valid options.')
+    print('Choice Registered!')
 
 
 print('Done!')
