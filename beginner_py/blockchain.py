@@ -36,6 +36,7 @@ def print_blockchain_info():
     for block in blockchain:
         print('Outputting blockchain information')
         print(block)
+    else:
         print('-' * 20)
 
 
